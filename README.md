@@ -1,7 +1,7 @@
 # redis_learn
 Redis入门指南(Luin 著)
 <div align="center">
-    <img src="pics/logo.jpg">
+    <img src="pics/front_cover.JPG">
 </div>
 
 ---
@@ -31,6 +31,6 @@ Redis入门指南(Luin 著)
 
 <br><br>
 <div align="center">
-    序
+    The end
 </div>
 
