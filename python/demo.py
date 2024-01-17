@@ -39,8 +39,8 @@ class visit:
     """模拟用户访问
     将用户的user agent作为用户的ID加入当前时间对应的键中
     """
-    def Get(self):
-        user_id = web.ctx.env('HTTP_USER_AGENT')
+    def GET(self):
+        user_id = web.ctx.env['HTTP_USER_AGENT']
         current_key = time_to_key(time.time())
         pipe = r.pipeline()
         pipe.sadd(current_key, user_id)
@@ -48,17 +48,17 @@ class visit:
         pipe.expire(current_key, 10 * 60)
         pipe.execute()
 
-        return 'User:\t ' + user_id + '\r\nKey:\t' + current_key
+        return 'User:\t ' + str(user_id) + '\r\nKey:\t' + current_key
     
 
 class online:
     """查看当前在线的用户列表
     """
-    def Get(self):
-        online_users = r.sunion(key_in_last_10_minutes)
+    def GET(self):
+        online_users = r.sunion(key_in_last_10_minutes())
         result = ""
         for user in online_users:
-            result += 'User Angent: ' + user + '\r\n'
+            result += 'User Angent: ' + str(user) + '\r\n'
         return result
     
 
